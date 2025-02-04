@@ -12,28 +12,34 @@ def start_game():
     #currentGame(rez_var)
     import test2
     #exec("test2.py")
+    
+
 
 #Profile
 pro = TK.Frame(root)
 pro_txt = TK.Label(pro, text="Profile")
-pro_txt.pack()
+pro_txt.grid(column=0,row=0)
 pro.pack( expand=True, pady=10)
+
+##Profil expanding Menu
+pro_default = TK.StringVar(pro)
+pro_default.set("New Profil")
+pro_options = ["Profil 1", "Profil 2"]
+pro_expanding = TK.OptionMenu(pro, pro_default, *pro_options)
+pro_expanding.grid(column=1,row=0)
 
 
 #Resolution
-rez_var = 400
-
 rez =TK.Frame(root,bg="lightblue")
 rez_txt = TK.Label(rez,text="Resolution")
-rez_4 = TK.Radiobutton(rez, text="400",variable=rez_var, value=400)
-rez_6 = TK.Radiobutton(rez, text="600",variable=rez_var, value=600)
-rez_8 = TK.Radiobutton(rez, text="800",variable=rez_var, value=800)
-rez_4.pack()
-rez_6.pack()
-rez_8.pack()
+rez_default = TK. StringVar(rez)
+rez_default.set("600")
 
+rez_options = ["400","600","800"]
+rez_expanding = TK.OptionMenu(rez, rez_default, *rez_options)
 
-rez_txt.pack()
+rez_txt.grid(column=0,row=0)
+rez_expanding.grid(column=1,row=0)
 rez.pack( expand=True, pady=10)
 
 #Qualité
