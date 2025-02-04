@@ -44,9 +44,16 @@ rez.pack( expand=True, pady=10)
 
 #Qualité
 qual = TK.Frame(root, bg="lightblue")
-qual_txt = TK.Label(root,text="Qualité")
-qual_txt.pack()
+qual_txt = TK.Label(qual,text="Qualité")
+qual_txt.grid(column=0,row=0)
 qual.pack( expand=True, pady=10)
+qual_var = TK.StringVar()
+qual_selectionH = TK.Radiobutton(qual, text="High", variable=qual_var, value="H")
+qual_selectionL = TK.Radiobutton(qual, text="Low", variable=qual_var, value="L")
+
+qual_txt.grid(column=0,row=0)
+qual_selectionH.grid(column=1,row=0)
+qual_selectionL.grid(column=2,row=0)
 
 #Start
 start_btn = TK.Button(root,text="Start", command=start_game)
