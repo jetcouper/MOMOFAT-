@@ -38,20 +38,29 @@ root.rowconfigure(1, weight=1)
 #### Config Actions
 def show_pro_content():
     print("Profil")
-    set_config()
+    
+    
     
 
 def show_video_content():
     print("Video")
+    parent = set_config()
+    set_video_info(parent)
+    delete_config()
 
 def show_audio_content():
     print("Audio")
+    delete_config()
+    set_video_info(config_frame)
 
 def show_admin_content():
     print("Admin")
 
 ####
 
+def delete_config():
+    for child in config_frame.winfo_children():
+            child.destroy()
 
 
 ############### Config widget
@@ -101,11 +110,17 @@ def set_config():
     title_video.bind("<Button-1>",lambda e:show_video_content())  
     title_audio.bind("<Button-1>",lambda e:show_audio_content())  
     title_admin.bind("<Button-1>",lambda e:show_admin_content())  
+    return config_content
 ###
 
 ####Events
 def set_video_info(parent):
     vid_qual = TK.Frame(parent)
+    vid_label1 = TK.Label(vid_qual, text="Qualité vidéo : ")
+    vid_label1.grid(column=0,row=0)
+    vid_qual.pack()
+    print("Printing video screen")
+    print(parent)
 
 
 
