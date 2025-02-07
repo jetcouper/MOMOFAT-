@@ -5,7 +5,7 @@ import tkinter as TK
 root = TK.Tk()
 root.title("TD Launcher")
 
-root.geometry("250x250")
+root.geometry("500x500")
 
 def start_game():
     root.destroy()
@@ -24,7 +24,7 @@ pro.pack( expand=True, pady=10)
 ##Profil expanding Menu
 pro_default = TK.StringVar(pro)
 pro_default.set("New Profil")
-pro_options = ["Profil 1", "Profil 2"]
+pro_options = ["Profil 1", "Profil 2","New Profil"]
 pro_expanding = TK.OptionMenu(pro, pro_default, *pro_options)
 pro_expanding.grid(column=1,row=0)
 
