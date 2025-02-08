@@ -35,23 +35,24 @@ root.columnconfigure(1, weight=3)
 root.rowconfigure(0, weight=2)
 root.rowconfigure(1, weight=1)
 
+config_content = TK.Frame()
+
 #### Config Actions
 def show_pro_content():
     print("Profil")
-    
+    delete_config()
+    set_config()
+    set_video_info()
     
     
 
 def show_video_content():
     print("Video")
-    parent = set_config()
-    set_video_info(parent)
-    delete_config()
+    
 
 def show_audio_content():
     print("Audio")
-    delete_config()
-    set_video_info(config_frame)
+    
 
 def show_admin_content():
     print("Admin")
@@ -114,13 +115,13 @@ def set_config():
 ###
 
 ####Events
-def set_video_info(parent):
-    vid_qual = TK.Frame(parent)
+def set_video_info():
+    vid_qual = TK.Frame(config_content)
     vid_label1 = TK.Label(vid_qual, text="Qualité vidéo : ")
     vid_label1.grid(column=0,row=0)
     vid_qual.pack()
     print("Printing video screen")
-    print(parent)
+    
 
 
 
