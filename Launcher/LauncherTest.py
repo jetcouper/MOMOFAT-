@@ -1,4 +1,5 @@
 import tkinter as TK
+import db_manager as db
 
 root = TK.Tk()
 root.title("TD Launcher")
@@ -29,6 +30,8 @@ content_frame = TK.Frame(config_frame, background="gray50")
 content_frame.grid(row=1, column=0, sticky="nsew")
 
 content_frame.columnconfigure(0, weight=1)
+content_frame.columnconfigure(1, weight=4)
+
 content_frame.rowconfigure(0, weight=1)
 
 # Fonction pour afficher du contenu
@@ -40,10 +43,22 @@ def show_content(content_func):
 # Fonctions pour chaque menu
 def show_pro_content():
     #TK.Label(content_frame, text="Profil settings", bg="gray50").grid(row=0, column=0)
+    pro_content_L = TK.Frame(content_frame,bg="gray54")
+    pro_content_L.grid(column=0,row=0,sticky="nsew")
+    
+    
 
-    pro = TK.Frame(content_frame)
-    pro_txt = TK.Label(pro, text="Profile")
-    pro_txt.grid(column=0,row=0)
+    new_pro = TK.Label(pro_content_L,background="gray40",text="New Profil")
+    new_pro.pack()
+    profils = db.get_all_profils()
+    for profil in profils:
+        profil = TK.Label(pro_content_L,background="gray40",text=profil)
+        profil.pack(expand=True,side="top")
+    
+
+    pro = TK.Frame(content_frame,background="gray50")
+    pro_txt = TK.Label(pro, text="Profil",background="gray50")
+    # pro_txt.grid(column=0,row=0)
     pro.grid()
 
     ##Profil expanding Menu
@@ -51,7 +66,7 @@ def show_pro_content():
     pro_default.set("New Profil")
     pro_options = ["Profil 1", "Profil 2","New Profil"]
     pro_expanding = TK.OptionMenu(pro, pro_default, *pro_options)
-    pro_expanding.grid(column=1,row=0)
+    # pro_expanding.grid(column=1,row=0)
 
 
 

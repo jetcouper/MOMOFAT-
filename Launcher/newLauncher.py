@@ -1,6 +1,6 @@
 import tkinter as TK
 #import test2  # On assume que test2.py est dans le même répertoire que ce script.
-from more_Colors import *
+
 
 root = TK.Tk()
 root.title("TD Launcher")

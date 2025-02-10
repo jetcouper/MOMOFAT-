@@ -66,6 +66,16 @@ def get_profil(id):
     cnt.close()
     return profil
 
+def get_all_profils():
+    profils = []
+    cnt = sqlite3.connect('sql.db')
+    cursor = cnt.execute('''SELECT NAME FROM Profils''')
+    for i in cursor:
+        profils.append(i)
+    cnt.close()
+    return profils
+    
+
 def get_game_id_by_name(name):
     profil = []
     cnt = sqlite3.connect('sql.db')
@@ -76,9 +86,9 @@ def get_game_id_by_name(name):
     return profil
 
 #create_profil("Jacques",368168,45)
-for i in get_all_IDs():
-    if i == 45:
-        delete_profil(i)
-player = get_all_IDs()
-print(player)
+# for i in get_all_IDs():
+#     if i == 45:
+#         delete_profil(i)
+# player = get_all_IDs()
+# print(player)
 
