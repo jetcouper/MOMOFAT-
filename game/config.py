@@ -1,1 +1,0 @@
-# Gestion des paramètres de configuration du jeu (langue, taille, etc.)
