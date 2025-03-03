@@ -32,6 +32,7 @@ class Vue(): #Ou on dessine
         btn = tk.Button(self.menu_jeu, text="GO")
         btn.bind("<Button>",self.demarre_jeu)
         self.menu_jeu.create_window(400,60,anchor="center", window=btn)
+        
     def demarre_jeu(self,evt):
         self.controleur.demarre_jeu()
 
@@ -59,11 +60,21 @@ class Creep():
 
     def bouger(self):
 
+        
         if self.no_troncon_courant != -1:
             if self.orientation == "horizontale":
+                tronconx = self.chemin[self.no_troncon_courant]
                 self.x += self.vitesse
+                if self.x > tronconx[0]: #A faire
+                    self.orientation = "verticale"
+                    self.no_troncon_courant += 1
+                
             elif self.orientation == "verticale":
+                troncony = self.chemin[self.no_troncon_courant]
                 self.y += self.vitesse
+                if self.y > self.chemin[self.no_troncon_courant:[0][0]]: #A faire
+                    self.orientation = "horizontale"
+                    self.no_troncon_courant += 1
         else:
             self.no_troncon_courant += 1
             self.troncon_courant = self.chemin[self.no_troncon_courant]
