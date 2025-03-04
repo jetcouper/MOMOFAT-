@@ -23,11 +23,12 @@ class Vue(): #Ou on dessine
                                      tags=("creep"))
 
     def partiePerdu(self):
-        self.partie_perdu = tk.Canvas(self.root, width=CENTER, height=CENTER, Message="Vous avec perdu")
+        self.partie_perdu = tk.Canvas(self.root, width=200, height=200)
+        self.partie_perdu.create_text(100,10,fill="darkblue", font="Times 20 italic bold", text="Vous avec perdu")
         self.partie_perdu.pack()
-        btn = tk.Button(self.menu_jeu, text="GO")
-        btn.bind("<Button>",self.creer_fenetre)
-        self.partie_perdu.create_window(400,60,anchor="center", window=btn)
+        btn2 = tk.Button(self.menu_jeu, text="Recommencer")
+        btn2.bind("<Button>",self.demarre_jeu)
+        self.menu_jeu.create_window(500,60,anchor="e", window=btn2)
         
 
     def dessine_statique(self):
@@ -79,9 +80,9 @@ class Modele():
                     if self.y > troncony: 
                         self.orientation = "horizontale"
                         self.no_troncon_courant += 1
-            elif self.no_troncon_courant > self.nbItem:
+            elif self.no_troncon_courant >= self.nbItem:
                     self.boolDefaite = True
-            else:
+            elif self.no_troncon_courant == -1:
                 self.no_troncon_courant += 1
                 self.troncon_courant = self.chemin[self.no_troncon_courant]
                 self.orientation = "horizontale"
